@@ -1,5 +1,7 @@
 package com.foo;
 
+import com.foo.service.ItemService;
+import com.foo.service.impl.ItemServiceImpl;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -25,6 +27,18 @@ public class ExamTest {
     @AfterClass
     public static void tearDown() {
         skuIds = null;
+    }
+
+
+    /**
+     * 测试入口
+     */
+    @Test
+    public void test(){
+        ItemService itemService = new ItemServiceImpl();
+        itemService.findBySkuIds(skuIds).forEach(itemVO -> {
+            System.out.println(itemVO);
+        });
     }
 
 }
